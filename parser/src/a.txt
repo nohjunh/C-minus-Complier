@@ -1,0 +1,37 @@
+
+Syntax tree:
+  [ func-declaration => name : gcd (int) ]
+    [ Parameter variable => name : u (int) ]
+    [ Parameter variable => name : v (int) ]
+    Compound-stmt :
+      If-stmt (else 포함) :
+        Op : ==
+          Id : v
+          Const: 0
+        Return-stmt :
+          Id : u
+        Return-stmt :
+          Call-stmt : gcd 
+            Id : v
+            Op : -
+              Id : u
+              Op : *
+                Op : /
+                  Id : u
+                  Id : v
+                Id : v
+  [ func-declaration => name : main (void) ]
+    [ Parameter variable => name : empty (void) ]
+    Compound-stmt :
+      [ Declaration of variable => name : x (int) ]
+      [ Declaration of variable => name : y (int) ]
+      Assign : (좌=우) 
+        Id : x
+        Call-stmt : input 
+      Assign : (좌=우) 
+        Id : y
+        Call-stmt : input 
+      Call-stmt : output 
+        Call-stmt : gcd 
+          Id : x
+          Id : y

@@ -1,0 +1,56 @@
+
+C- language: 2.c
+   1: /* A program to perform selection sort on a 10
+   2:    element array. */
+   3: 
+   4: int x[10];
+	4: reserved word: int
+	4: ID, name= x
+	4: [
+	4: NUM, val= 10
+	4: ]
+	4: ;
+   5: /*
+   6: 
+   7: int minloc ( int a[], int low, int high )
+   8: {	int i; int x; int k;
+   9: 	k = low;
+  10: 	x = a[low];
+  11: 	i = low + 1;
+  12: 	while (i < high)
+  13: 	{	if (a[i] < x)
+  14: 			{ x = a[i];
+  15: 			  k = i;  }
+  16: 		i = i + 1;
+  17: 	}
+  18: 	return k;
+  19: }
+  20: 
+  21: void sort( int a[], int low, int high)
+  22: {	int i; int k;
+  23: 	i = low;	
+  24: 
+  25: 	while (i < high-1)
+  26: 	{	int t;
+  27: 		k = minloc(a,i,high,i);
+  28: 		t = a[k];
+  29: 		a[k] = a[i];
+  30: 		a[i] = t;
+  31: 		i = i + 1;
+  32: 	}
+  33: }
+  34: 
+  35: void main(void)
+  36: {	int i;
+  37: 	i = 0;
+  38: 	while (i < 10)
+  39: 	{	x[i] = input();
+  40: 		i = i + 1; }
+  41: 	sort(x,0,10);
+  42: 	i = 0;
+  43: 	while (i < 10)
+  44: 	{	output(x[i]);
+  45: 		i = i + 1; }
+  46: }
+	47: stop before ending
+	48: EOF

@@ -1,0 +1,131 @@
+
+Syntax tree:
+  [ Declaration of Array => name : x (int), (array_size : 10) ]
+  [ func-declaration => name : minloc (int) ]
+    [ Parameter in Array => name : a (int) ] 
+    [ Parameter variable => name : low (int) ]
+    [ Parameter variable => name : high (int) ]
+    Compound-stmt :
+      [ Declaration of variable => name : i (int) ]
+      [ Declaration of variable => name : x (int) ]
+      [ Declaration of variable => name : k (int) ]
+      Assign : (좌=우) 
+        Id : k
+        Id : low
+      Assign : (좌=우) 
+        Id : x
+        Id : a
+          Id : low
+      Assign : (좌=우) 
+        Id : i
+        Op : +
+          Id : low
+          Const: 1
+      While-stmt (iteration) :
+        Op : <
+          Id : i
+          Id : high
+        Compound-stmt :
+          If-stmt (else 미포함) :
+            Op : <
+              Id : a
+                Id : i
+              Id : x
+            Compound-stmt :
+              Assign : (좌=우) 
+                Id : x
+                Id : a
+                  Id : i
+              Assign : (좌=우) 
+                Id : k
+                Id : i
+          Assign : (좌=우) 
+            Id : i
+            Op : +
+              Id : i
+              Const: 1
+      Return-stmt :
+        Id : k
+  [ func-declaration => name : sort (void) ]
+    [ Parameter in Array => name : a (int) ] 
+    [ Parameter variable => name : low (int) ]
+    [ Parameter variable => name : high (int) ]
+    Compound-stmt :
+      [ Declaration of variable => name : i (int) ]
+      [ Declaration of variable => name : k (int) ]
+      Assign : (좌=우) 
+        Id : i
+        Id : low
+      While-stmt (iteration) :
+        Op : <
+          Id : i
+          Op : -
+            Id : high
+            Const: 1
+        Compound-stmt :
+          [ Declaration of variable => name : t (int) ]
+          Assign : (좌=우) 
+            Id : k
+            Call-stmt : minloc 
+              Id : a
+              Id : i
+              Id : high
+          Assign : (좌=우) 
+            Id : t
+            Id : a
+              Id : k
+          Assign : (좌=우) 
+            Id : a
+              Id : k
+            Id : a
+              Id : i
+          Assign : (좌=우) 
+            Id : a
+              Id : i
+            Id : t
+          Assign : (좌=우) 
+            Id : i
+            Op : +
+              Id : i
+              Const: 1
+  [ func-declaration => name : main (void) ]
+    [ Parameter variable => name : empty (void) ]
+    Compound-stmt :
+      [ Declaration of variable => name : i (int) ]
+      Assign : (좌=우) 
+        Id : i
+        Const: 0
+      While-stmt (iteration) :
+        Op : <
+          Id : i
+          Const: 10
+        Compound-stmt :
+          Assign : (좌=우) 
+            Id : x
+              Id : i
+            Call-stmt : input 
+          Assign : (좌=우) 
+            Id : i
+            Op : +
+              Id : i
+              Const: 1
+      Call-stmt : sort 
+        Id : x
+        Const: 0
+        Const: 10
+      Assign : (좌=우) 
+        Id : i
+        Const: 0
+      While-stmt (iteration) :
+        Op : <
+          Id : i
+          Const: 10
+        Compound-stmt :
+          Call-stmt : output 
+            Id : x
+              Id : i
+          Assign : (좌=우) 
+            Id : i
+            Op : +
+              Id : i
+              Const: 1
